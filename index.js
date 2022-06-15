@@ -11,7 +11,7 @@ async function main() {
         process.env.MOVIEREVIEWS_DB_URI
     )
 
-    const PORT = process.env.PORT || 8000;
+    const port = process.env.PORT || 8000;
 
     try {
         await client.connect();
