@@ -70,7 +70,7 @@ export default class ReviewsController {
                 reviewId,
                 userId
             );
-            console.log(reviewResponse.deletedCount);
+            
             var { error } = reviewResponse;
 
             if (error) {
