@@ -15,6 +15,7 @@ router.route("/review").delete(ReviewsController.apiDeleteReview);
 
 router.route("/favorites").put(FavoritesController.apiUpdateFavorites);
 router.route("/favorites/:userId").get(FavoritesController.apiGetFavorites)
+router.route("/favorites/:userId/getMoviesByFavorites").get(FavoritesController.apiGetMoviesByFavorites);
 
 export default router;
 

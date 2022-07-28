@@ -1,3 +1,5 @@
+import MoviesDAO from './moviesDAO.js';
+
 let favoritesCollection;
 
 export default class FavoritesDAO {
@@ -45,5 +47,26 @@ export default class FavoritesDAO {
             throw e;
         }
 
+    }
+
+    static async getMoviesByFavorites(id) {
+
+        try {
+            const favResponse = await this.getFavorites(id).then(response => {
+                return response;
+            });
+    
+            let favorites = favResponse.favorites;
+            let movies = [];
+
+            for (let i = 0; i < favorites.length; i++) {
+                let movie = await MoviesDAO.getMovieById(favorites[i]);
+                movies.push(movie);
+            }
+            return {movies};
+        } catch (e) {
+            console.error(`Error: ${e}`);
+            throw e;
+        }
     }
 }

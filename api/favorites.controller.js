@@ -36,4 +36,19 @@ export default class FavoritesController {
             res.status(500).json({error: e});
         }
     }
+
+    static async apiGetMoviesByFavorites(req, res, next) {
+        try {
+            let id = req.params.userId;
+            let movies = await FavoritesDAO.getMoviesByFavorites(id);
+            if (!movies) {
+                res.status(404).json({error: "not found"});
+                return;
+            }
+            res.json(movies)
+        } catch(e) {
+            console.log(`API, ${e}`);
+            res.status(500).json({error: e});
+        }
+    }
 }
